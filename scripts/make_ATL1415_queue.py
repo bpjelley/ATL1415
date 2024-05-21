@@ -115,6 +115,8 @@ release_dir = os.path.join(defaults['--ATL14_root'], "rel"+defaults['--Release']
 hemi_dir=os.path.join(release_dir, hemisphere_name)
 if "--base_directory" in defaults:
     region_dir=defaults['--base_directory']
+elif '-b' in defaults:
+    region_dir=defaults['-b']
 else:
     region_dir=os.path.join(hemi_dir, defaults['--region'])
 
@@ -173,10 +175,13 @@ else:
     if mask_ext in ('.tif','.h5'):
         if mask_ext=='.h5' and '_100m' in mask_base:
             tif_1km=defaults['--mask_file'].replace('_100m.h5', '_1km.tif')
+        elif  mask_ext=='.h5' and '_240m' in mask_base:
+             tif_1km=defaults['--mask_file'].replace('_240m.h5', '_1km.tif')
         elif '_full' in mask_base:
             tif_1km=defaults['--mask_file'].replace('_full.h5', '_1km.tif')
         else:
             tif_1km=defaults['--mask_file'].replace('100m','1km').replace('125m','1km')
+        print()
         print(tif_1km)
         print()
         temp=pc.grid.data().from_geotif(tif_1km)
