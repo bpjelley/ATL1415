@@ -64,6 +64,9 @@ if args.skip_errors:
     calc_errors=False
 else:
     calc_errors=True
+
+if args.errors_only:
+    args.replace=True
     
 XR=None
 YR=None

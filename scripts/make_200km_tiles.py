@@ -16,7 +16,7 @@ def make_fields():
 
     fields['dz']="dz sigma_dz count misfit_rms misfit_scaled_rms mask cell_area".split(' ')
 
-    lags=['_lag1', '_lag4', '_lag8', '_lag12','_lag16']
+    lags=['_lag1', '_lag4', '_lag8', '_lag12','_lag16', '_lag20']
     for lag in lags:
         fields['dzdt'+lag]=["dzdt"+lag, "sigma_dzdt"+lag, "cell_area"]
 
@@ -75,7 +75,7 @@ parser.add_argument('--W', type=int, default=60000)
 parser.add_argument('--spacing', type=int, default=40000)
 parser.add_argument('--skip_sigma', action='store_true')
 parser.add_argument('--name', type=str)
-parser.add_argument('--environment','-e', type=str, default='IS2', help="environment that each job will activate")
+parser.add_argument('--environment','-e', type=str, default='ATL14', help="environment that each job will activate")
 args=parser.parse_args()
 
 region_dir=args.region_dir
